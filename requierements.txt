@@ -1,4 +1,1 @@
-vk_api
-urllib
-json
-random
+vk-api==11.9.1
