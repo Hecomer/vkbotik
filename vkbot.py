@@ -48,12 +48,12 @@ def main():
     for event in longpoll.listen():
         if event.type == VkBotEventType.MESSAGE_NEW:
             vk = vk_session.get_api()
+            print(event)
+            print('Новое сообщение:')
+            print('Для меня от:', event.obj.message['from_id'])
+            print('Текст:', event.obj.message['text'])
 
             if event.obj.message['text'].startswith('!помощь'):
-                print(event)
-                print('Новое сообщение:')
-                print('Для меня от:', event.obj.message['from_id'])
-                print('Текст:', event.obj.message['text'])
                 vk.messages.send(user_id=event.obj['message']['from_id'],
                                  message="Команды: \n !предсказание - подскажет будущее\n "
                                          "!орёл и решка - подкидывает монету и выводит результат\n"
